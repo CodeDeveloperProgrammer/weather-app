@@ -5,7 +5,7 @@ import { useState } from "react";
 console.log(import.meta.env.VITE_API_KEY);
 const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
   import.meta.env.VITE_API_KEY
-}&q=no`;
+}&lang=es&q=`;
 
 export default function App() {
   const [city, setCity] = useState("");
@@ -18,16 +18,10 @@ export default function App() {
   const [weather, setWeather] = useState({
     city: "",
     country: "",
-    temperature: "",
-    description: "",
-    humidity: "",
-    wind_speed: "",
-    pressure: "",
-    sunrise: "",
-    sunset: "",
-    icon: "",
+    condition: "",
     conditionText: "",
-    error: false,
+    icon: "",
+    temperature: "",
   });
 
   const onSubmit = async (e) => {
@@ -47,16 +41,10 @@ export default function App() {
       setWeather({
         city: data.location.name,
         country: data.location.country,
-        temperature: data.current.temp_c,
-        description: data.current.condition.text,
-        humidity: data.current.humidity,
-        wind_speed: data.current.wind_kph,
-        pressure: data.current.pressure_mb,
-        sunrise: data.location.localtime,
-        sunset: data.location.localtime,
-        icon: data.current.condition.icon,
+        condition: data.current.condition.code,
         conditionText: data.current.condition.text,
-        error: false,
+        icon: data.current.condition.icon,
+        temperature: data.current.temp_c,
       });
     } catch (error) {
       console.log(error);
@@ -112,14 +100,14 @@ export default function App() {
               {weather.city}, {weather.country}
             </Typography>
             <Box
-              sx={{ margin: "auto", display: "block" }}
+              sx={{ margin: "0 auto"}}
               component="img"
               src={weather.icon}
               alt={weather.conditionText}
               width={100}
             />
             <Typography variant="h5" component="h2" gutterBottom>
-              {weather.temperature}°C
+              {weather.temperature} °C
             </Typography>
             <Typography variant="h5" component="h2" gutterBottom>
               {weather.conditionText}
