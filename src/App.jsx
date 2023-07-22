@@ -2,7 +2,7 @@ import { LoadingButton } from "@mui/lab";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
-/* "http://api.weatherapi.com/v1/current.json?key=8677e700743849a4b49153709231807&lang=es&q=" */
+
 console.log(import.meta.env.VITE_API_KEY);
 const API_WEATHER = import.meta.env.VITE_API_KEY;
 
@@ -95,7 +95,7 @@ export default function App() {
 
         {weather.city && (// Si hay una ciudad, mostrar el resultado
           <Box sx={{ display: "grid", gap: 2, mt: 2, textAlign: "center" }}>
-            <Typography variant="h5" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" >
               {weather.city}, {weather.country}
             </Typography>
             <Box
@@ -105,10 +105,10 @@ export default function App() {
               alt={weather.conditionText}
               width={100}
             />
-            <Typography variant="h5" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" >
               {weather.temperature} °C
             </Typography>
-            <Typography variant="h5" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" >
               {weather.conditionText}
             </Typography>
           </Box>
