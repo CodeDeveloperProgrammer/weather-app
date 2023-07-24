@@ -2,8 +2,7 @@ import { LoadingButton } from "@mui/lab";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
-
-console.log(import.meta.env.VITE_API_KEY);
+// 
 const API_WEATHER = import.meta.env.VITE_API_KEY;
 
 export default function App() {
@@ -86,8 +85,7 @@ export default function App() {
             variant="contained"
             type="submit"
             loading={loading}
-            loadingPosition="start"
-            loadingIndicator="Cargando..."
+            loadingIndicator="Consultando..."
           >
             Consultar
           </LoadingButton>
@@ -105,10 +103,10 @@ export default function App() {
               alt={weather.conditionText}
               width={100}
             />
-            <Typography variant="h5" component="h2" >
+            <Typography variant="h5" component="h2">
               {weather.temperature} °C
             </Typography>
-            <Typography variant="h5" component="h2" >
+            <Typography variant="h5" component="h2">
               {weather.conditionText}
             </Typography>
           </Box>
